@@ -10,7 +10,26 @@ class CartItem extends React.Component {
             img: ''
 
         }
+        // this.increaseQuantity = this.increaseQuantity.bind(this);
         
+    }
+    increaseQuantity = () =>  {
+
+        // console.log('this', this.state);
+
+
+        // Set state form1 --> use when prev state is not require
+        // this.setState( {
+        //     qty: this.state.qty + 1
+        // });
+
+         // Set state form1 --> use when prev state is not require
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty + 1
+            }
+        });
+       
     }
     render () {
         const {price, title, qty} = this.state;
@@ -18,7 +37,7 @@ class CartItem extends React.Component {
             
             <div className = "cart-item">
                 <div className = "left-block">
-                    <img style={styles.image} />
+                    <img alt="img" style={styles.image}  />
                 </div>
 
                 <div className = "right-block">
@@ -27,9 +46,20 @@ class CartItem extends React.Component {
                     <div style={ { color: '#777' } }>Qty: {qty}</div>
                     <div className = "cart-item-actions">
                         {/* Buttons */}
-                        <img alt="increase" className="action-icons" src="https://image.flaticon.com/icons/svg/992/992651.svg"></img>
-                        <img alt="decrease" className="action-icons" src="https://image.flaticon.com/icons/svg/992/992683.svg"></img>
-                        <img alt="delete" className="action-icons" src="https://image.flaticon.com/icons/svg/1214/1214428.svg"></img>
+                        <img 
+                            alt="increase" 
+                            className="action-icons" 
+                            src="https://image.flaticon.com/icons/svg/992/992651.svg"
+                            onClick = {this.increaseQuantity}
+                        />
+                        <img 
+                            alt="decrease" 
+                            className="action-icons" 
+                            src="https://image.flaticon.com/icons/svg/992/992683.svg"/>
+                        <img 
+                            alt="delete" 
+                            className="action-icons" 
+                            src="https://image.flaticon.com/icons/svg/1214/1214428.svg"/>
                     </div>
                 </div>
             </div>
